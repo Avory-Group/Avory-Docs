@@ -4,7 +4,7 @@
   "name": "NGS Docs",
   "colors": {
     "primary": "#a481f5",
-    "light": "#9664ec",
+    "light": "#4a3175",
     "dark": "#552d99"
   },
   "favicon": "/images/NGS-2-removebg-preview.png",
@@ -45,10 +45,7 @@
       }
     ]
   },
-  "logo": {
-    "light": "/logo/light.svg",
-    "dark": "/logo/dark.svg"
-  },
+  "logo": "/images/NGS-2-removebg-preview.png",
   "navbar": {
     "links": [
       {
@@ -85,8 +82,15 @@
   "background": {
     "decoration": "grid",
     "color": {
-      "light": "#cecece",
+      "light": "#ffffff",
       "dark": "#181818"
+    }
+  },
+  "errors": {
+    "404": {
+      "redirect": true,
+      "title": "Page Not Found",
+      "description": "The page you are looking for does not exist."
     }
   }
 }
