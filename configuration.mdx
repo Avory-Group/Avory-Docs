@@ -76,14 +76,75 @@ Settings.HRUsers = {
 return Settings
 ```
 
-<Accordion title="General Settings">
-  <Accordion title="Cafe Name">
-    The "Cafe Name" configuration option is intended for setting the name of the cafe, which is displayed on the login screen, in the top bar, and—in version 2—also on the customer display.\
-    \
+## General Settings
+
+<Tabs>
+  <Tab title="Cafe Name">
+    The "Cafe Name" configuration option is intended for setting the name of the cafe, which is displayed on the login screen, in the top bar, and—in version 2—also on the customer display.
+
     **Example:**
 
     ```luau
     Settings.CafeName = "Kälua"
     ```
-  </Accordion>
-</Accordion>
+  </Tab>
+  <Tab title="Lane Number" icon="input-numeric">
+    The Lane Number serves to provide each terminal with a unique identifier. This number can be used for the API (coming soon) and for support calls from POS terminals.
+
+    <Warning>
+      Two identical lane numbers will automatically deactivate a terminal to prevent the lane numbers from colliding.
+    </Warning>
+
+    **Example:**
+
+    ```luau
+    Settings.LaneNumber = 1
+    ```
+  </Tab>
+  <Tab title="Booting Mode" icon="hourglass-start">
+    Here, you can choose whether the terminal should be switched on immediately when the game starts, or if it should first run through a boot sequence.
+
+    <Warning>
+      An invalid boot option causes the terminal to automatically execute the boot sequence.
+    </Warning>
+
+    **Example:**
+
+    ```luau
+    Settings.Booting = "Boot"
+    ```
+  </Tab>
+  <Tab title="Pricetag" icon="chart-mixed-up-circle-currency">
+    The pricetag is the currency to be displayed during checkout and on the POS screen.
+
+    **Example:**
+
+    ```luau
+    Settings.PriceTag = "$"
+    ```
+  </Tab>
+  <Tab title="Rescanable Items">
+    Would you like items to be scannable again at the POS after a successful sale, or no longer scannable?
+
+    **Example:**\
+
+    ```luau
+    Settings.RescannableItems = true
+    ```
+  </Tab>
+  <Tab title="Custom UI">
+    Would you like your POS to operate with the standard NGS CafePOS Lite UI, or with your own custom design?
+
+    <Danger>
+      When creating a custom UI, you should be familiar with basic Roblox UI elements and editing methods. Furthermore, you should not rename any elements, as they may be essential components that could cause the POS system to crash.
+
+      NGS is not responsible for system bugs, crashes, or similar issues resulting from errors within custom UIs.
+    </Danger>
+  </Tab>
+</Tabs>
+
+**Example:**
+
+```luau
+Settings.CustomUI = "Custom"
+```
