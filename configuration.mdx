@@ -1,0 +1,89 @@
+---
+title: "Configuration"
+icon: "gear-code"
+---
+
+Do you need help configuring your CafePOS Lite? Then you've come to the right place.
+
+<Warning>
+  Configuring NGS CafePOS Lite v1.0.2 **requires basic knowledge of the Luau** programming language.
+</Warning>
+
+This configuration is included in every NGS CafePOS Lite terminal. \
+Can't find it? It's a `Module Script` named `Settings`
+
+```luau
+--[[
+_   _    ____   ____  
+| \ | |  / ___| / ___| 
+|  \| | | |  _  \___ \ 
+| |\  | | |_| |  ___) |
+|_| \_|  \____| |____/ 
+
+CafePOS Lite | Settings
+------------------------------------------------------------.
+WARNING
+===================================================
+Modification can lead to script breakage. (This doesn't count for the existing configuration options)
+--]]
+
+local Settings = {}
+
+-- =========================================================
+-- General Cafe Settings
+-- =========================================================
+Settings.CafeName = "Demo Name"  -- Name of your cafe as displayed in the POS system
+Settings.LaneNumber = 1    -- Number of the POS lane (register)
+Settings.Booting = "Boot"     -- Set to On to deactivate booting. Set to Boot to activate booting.
+-- If you not enter anything it will be set to "Boot"
+Settings.PriceTag = "$"  -- What is your currency displayed on the POS screen?
+Settings.RescannableItems = false  -- Should items be rescannable?
+Settings.CustomUI = "Default" -- Set to default for default UI. Set to "Custom" for custom UI.
+-- Make a Folder in ServerStorage called "NGS | CafePOS UI" and put your custom UI in it.
+
+-- =========================================================
+-- High Rank Access Settings
+-- =========================================================
+-- Determines which groups and ranks can access the POS while a staff member is logged in
+-- Format: ["GroupID"] = {AllowedRanks}
+
+--[[
+
+                WARNING
+================================================
+This function is not included in the v1 version. It will be added in the v2 update.
+
+Settings["HighRankGroups"] = {
+	["35857633"] = {254, 255},   -- Example group with allowed ranks
+	["12345678"] = {200, 201},   -- Another example group
+	-- Add more groups and ranks as needed
+}
+
+-- Specific users allowed to bypass staff login restrictions
+Settings.HRUsers = {
+	"Username1",
+	"Username2"
+}
+
+--]]
+
+-- =========================================================
+-- Notes:
+-- 1. Users not in these groups or ranks cannot access the POS while staff is logged in.
+-- 2. Make sure GroupIDs and ranks match exactly those in Roblox.
+-- =========================================================
+
+return Settings
+```
+
+<Accordion title="General Settings">
+  <Accordion title="Cafe Name">
+    The "Cafe Name" configuration option is intended for setting the name of the cafe, which is displayed on the login screen, in the top bar, and—in version 2—also on the customer display.\
+    \
+    **Example:**
+
+    ```luau
+    Settings.CafeName = "Kälua"
+    ```
+  </Accordion>
+</Accordion>
