@@ -77,7 +77,6 @@
     }
   },
   "api": {
-    "openapi": "lol"
   },
   "background": {
     "decoration": "grid",
