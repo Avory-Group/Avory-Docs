@@ -3,3 +3,230 @@ title: "Configuration"
 icon: "gear-code"
 description: "Learn how to configure your CafePOS Lite terminal system."
 ---
+
+Configure your **NGS CafePOS Lite** terminal system directly through the built-in `Settings` module.
+
+<Info>
+  Every CafePOS Lite terminal includes a preconfigured ModuleScript called `Settings`. This allows you to customize:
+
+  - POS behavior
+  - UI appearance
+  - Lane setup
+  - Future integration systems
+</Info>
+
+<CardGroup cols={2}>
+  <Card title="Easy Configuration" icon="sliders">
+    Most system behavior can be customized without modifying core POS scripts.
+  </Card>
+
+  <Card title="Roblox Powered" icon="cube">
+    CafePOS Lite is fully built in Roblox using Luau and Roblox UI systems.
+  </Card>
+</CardGroup>
+
+---
+
+## Requirements
+
+<Warning>
+  Configuring NGS CafePOS Lite v1.0.2 requires basic knowledge of the **Luau** programming language and Roblox Studio.
+</Warning>
+
+### Recommended Knowledge
+
+- Editing ModuleScripts
+- Basic Roblox Studio navigation
+- Understanding variables & values
+- Basic UI editing
+
+---
+
+# Finding the Settings Module
+
+## Location
+
+The **Settings ModuleScript** is located inside your CafePOS Lite system in Roblox Studio.
+
+---
+
+## Opening the Settings Module
+
+1. Open **Roblox Studio**
+2. Load your CafePOS Lite place
+3. Navigate to **ServerScriptService**
+4. Locate the **CafePOS Lite** folder
+5. Click on **Settings**
+6. Open it in the script editor
+
+<Info>
+  All configuration changes must be made inside this ModuleScript. Do not rename or delete the module.
+</Info>
+
+---
+
+## Editing Configuration Values
+
+Inside the Settings module, you will find a table:
+
+```luau
+--[[
+_   _    ____   ____  
+| \ | |  / ___| / ___| 
+|  \| | | |  _  \___ \ 
+| |\  | | |_| |  ___) |
+|_| \_|  \____| |____/ 
+
+CafePOS Lite | Settings
+------------------------------------------------------------.
+WARNING
+===================================================
+Modification can lead to script breakage. (This doesn't count for the existing configuration options)
+--]]
+
+local Settings = {}
+
+-- =========================================================
+-- General Cafe Settings
+-- =========================================================
+Settings.CafeName = "Demo Name"  -- Name of your cafe as displayed in the POS system
+Settings.LaneNumber = 1    -- Number of the POS lane (register)
+Settings.Booting = "Boot"     -- Set to On to deactivate booting. Set to Boot to activate booting.
+-- If you not enter anything it will be set to "Boot"
+Settings.PriceTag = "$"  -- What is your currency displayed on the POS screen?
+Settings.RescannableItems = false  -- Should items be rescannable?
+Settings.CustomUI = "Default" -- Set to default for default UI. Set to "Custom" for custom UI.
+-- Make a Folder in ServerStorage called "NGS | CafePOS UI" and put your custom UI in it.
+
+-- =========================================================
+-- High Rank Access Settings
+-- =========================================================
+-- Determines which groups and ranks can access the POS while a staff member is logged in
+-- Format: ["GroupID"] = {AllowedRanks}
+
+--[[
+
+                WARNING
+================================================
+This function is not included in the v1 version. It will be added in the v2 update.
+
+Settings["HighRankGroups"] = {
+	["35857633"] = {254, 255},   -- Example group with allowed ranks
+	["12345678"] = {200, 201},   -- Another example group
+	-- Add more groups and ranks as needed
+}
+
+-- Specific users allowed to bypass staff login restrictions
+Settings.HRUsers = {
+	"Username1",
+	"Username2"
+}
+
+--]]
+
+-- =========================================================
+-- Notes:
+-- 1. Users not in these groups or ranks cannot access the POS while staff is logged in.
+-- 2. Make sure GroupIDs and ranks match exactly those in Roblox.
+-- =========================================================
+
+return Settings
+```
+
+---
+
+## Cafe Name
+
+To change the café name on the POS terminal, you must open the Settings Module; there, as shown in the example, you will find a `string` value that can be modified. You can set this value to your café's name. After changing the value, you can test the game; the POS terminal should now display the configured name.
+
+#### Example
+
+```luau
+Settings.CafeName = "Aurora Café"
+```
+
+---
+
+## Lane Number
+
+Lane numbers serve to distinguish the terminals from one another. This is important so that, during high-rank calls, the Lane ID can be transmitted. They are also required in version 2 to enable the API to control specific lanes.
+
+<Warning>
+  In the event of conflicting Lane IDs, a terminal is automatically deactivated; **only one** terminal with a given Lane Number may exist at any time.
+</Warning>
+
+#### Example
+
+```luau
+Settings.LaneNumber = 24
+```
+
+---
+
+## Booting Mode
+
+At game startup, various boot modes can be selected. There are two options: "Boot" and "On." With the "Boot" option, the terminal will run through a boot sequence upon game launch before becoming operational. With the "On" option, the terminal will be ready for operation immediately upon game launch.
+
+<Note>
+  If the selected boot method does not exist, the POS terminal will automatically boot up to the boot screen.
+</Note>
+
+#### Example
+
+```luau
+Settings.Booting = "Boot"
+```
+
+---
+
+## Currency
+
+The POS system supports a currency setting, allowing it to adapt to various currencies. To change the currency, simply set the PriceTag value to the desired currency.
+
+#### Example
+
+```luau
+Settings.PriceTag = "R$"
+```
+
+---
+
+## Re-Scannable Items
+
+After a successful transaction, the POS terminal can invalidate the items prior to dispensing them, rendering them unscannable; however, this feature can also be disabled.
+
+#### Example
+
+```luau
+Settings.RescannableItems = true
+```
+
+---
+
+## Custom UIs
+
+The UI of the POS terminals can be modified by changing the "CustomUI" option from "Default" to "Custom."
+
+For the Custom UI to load, a folder named `NGS | CafePOS UI` must exist within `ServerStorage`. The Custom UI files must be placed inside this folder.
+
+<Danger>
+  NGS is not responsible for any errors, POS crashes, or similar issues. Custom UIs are designed by you and require an understanding of how to modify UIs within Roblox Studio.
+
+  Please do not rename any elements within the UI, as some of them are required by the POS. Renaming these elements may cause POS errors.
+</Danger>
+
+#### Example
+
+```luau
+Settings.CustomUI = "Custom"
+```
+
+---
+
+## Success
+
+<Check>
+  You have successfully set up your Cafe POS Lite terminal.
+</Check>
+
+If you still have questions or unexplained errors, join our [Discord server](https://discord.gg/s4k6VgNw) and open a support ticket.
