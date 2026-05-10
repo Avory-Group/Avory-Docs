@@ -44,9 +44,6 @@
     ]
   },
   "logo": "/images/NGS-2-removebg-preview.png",
-  "navbar": {
-    "links": [],
-  },
   "contextual": {
     "options": [
      "copy",
