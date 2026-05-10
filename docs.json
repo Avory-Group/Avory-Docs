@@ -25,6 +25,7 @@
                 "pages": [
                   "installation",
                   "configuration",
+                  "updating",
                   "api",
                   "global-config"
                 ]

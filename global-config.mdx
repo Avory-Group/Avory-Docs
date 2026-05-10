@@ -2,3 +2,116 @@
 title: "Global Config"
 icon: "globe-wifi"
 ---
+
+Learn how to set up a global configuration.
+
+---
+
+<Warning>
+  Installing global configurations **requires knowledge of Roblox Studio**, such as workspace manipulation, script editing, and the insertion of script types.
+</Warning>
+
+<Steps>
+  <Step title="Open Roblox Studio">
+    Open Roblox Studio and select your experience.
+  </Step>
+  <Step title="Create the Global Config">
+    Copy the code below this text. Now switch to the CafePOS Lite folder. Create a `ModuleScript` there and name it `GlobalConfig`.
+
+    ```luau
+    --[[
+    _   _    ____   ____  
+    | \ | |  / ___| / ___| 
+    |  \| | | |  _  \___ \ 
+    | |\  | | |_| |  ___) |
+    |_| \_|  \____| |____/ 
+    
+    CafePOS Lite | Global Config
+    ------------------------------------------------------------.
+    IMPORTANT
+    ===================================================
+    This is the GLOBAL configuration file for CafePOS.
+    
+    All POS lanes automatically load their settings
+    from this file.
+    
+    You should configure your cafe settings here.
+    
+    Lane specific settings (like LaneNumber) must
+    be configured inside each POS lane script.
+    
+    Changing values here will affect ALL POS lanes
+    unless a lane overrides the value locally.
+    --]]
+    
+    local GlobalConfig = {}
+    
+    -- =========================================================
+    -- General Cafe Settings
+    -- =========================================================
+    Settings.CafeName = "Demo Name"  -- Name of your cafe as displayed in the POS system
+    Settings.Booting = "Boot"     -- Set to On to deactivate booting. Set to Boot to activate booting.
+    -- If you not enter anything it will be set to "Boot"
+    Settings.PriceTag = "$"  -- What is your currency displayed on the POS screen?
+    Settings.RescannableItems = false  -- Should items be rescannable?
+    Settings.CustomUI = "Default" -- Set to default for default UI. Set to "Custom" for custom UI.
+    -- Make a Folder in ServerStorage called "NGS | CafePOS UI" and put your custom UI in it.
+    
+    return Global Config
+    ```
+  </Step>
+  <Step title="Override The POS Settings">
+    Now that the Global Config exists, copy the code located below this text. Select your CafePOS Lite folder, then select the "Terminals" folder. Now, within each POS model, replace the contents of the "settings" module with the copied content.
+
+    ```luau
+    --[[
+    _   _    ____   ____  
+    | \ | |  / ___| / ___| 
+    |  \| | | |  _  \___ \ 
+    | |\  | | |_| |  ___) |
+    |_| \_|  \____| |____/ 
+    
+    CafePOS Lite | Settings
+    ------------------------------------------------------------.
+    WARNING
+    ===================================================
+    Modification can lead to script breakage. (This doesn't count for the existing configuration options)
+    --]]
+    
+    local gConfig = require(script.Parent.Parent.GlobalConfig)
+    
+    local Settings = {}
+    
+    -- =========================================================
+    -- Locally Required Settings
+    -- =========================================================
+    
+    Settings.LaneNumber = 1    -- Number of the POS lane (register)
+    
+    -- =========================================================
+    -- Loaded Settings
+    -- =========================================================
+    Settings.CafeName = gConfig.CafeName  -- Name of your cafe as displayed in the POS system
+    Settings.LaneNumber = gConfig.LaneNumber  -- Number of the POS lane (register)
+    Settings.Booting = gConfig.Booting     -- Set to On to deactivate booting. Set to Boot to activate booting.
+    -- If you not enter anything it will be set to "Boot"
+    Settings.PriceTag = gConfig.PriceTag -- What is your currency displayed on the POS screen?
+    Settings.RescannableItems = gConfig.RescannableItems -- Should items be rescannable?
+    Settings.CustomUI = gConfig.CustomUI -- Set to default for default UI. Set to "Custom" for custom UI.
+    -- Make a Folder in ServerStorage called "NGS | CafePOS UI" and put your custom UI in it.
+    
+    
+    return Settings
+    ```
+
+    <Warning>
+      The Lane ID **must still be configured** in every terminal.
+    </Warning>
+  </Step>
+  <Step title="Configure The Global Settings">
+    Now you can edit all options in the Global Settings module, and the POS terminals will be automatically updated.
+  </Step>
+  <Step title="You're All Set">
+    You have successfully configured and created the global configuration.
+  </Step>
+</Steps>
