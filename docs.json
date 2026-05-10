@@ -85,7 +85,7 @@
     "decoration": "grid",
     "color": {
       "light": "#ffffff",
-      "dark": "#181818"
+      "dark": "#000000"
     }
   },
   "errors": {
