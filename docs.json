@@ -9,39 +9,47 @@
   },
   "favicon": "/images/NGS-2-removebg-preview.png",
   "navigation": {
-    "tabs": [
+    "versions": [
       {
-        "tab": "Product Installation",
-        "icon": "brackets-curly",
-        "groups": [
+        "version": "v1",
+        "tabs": [
           {
-            "group": "CafePOS Lite",
-            "pages": [
-              "installation",
-              "configuration",
-              "api",
-              "v2"
-            ]
-          }
-        ]
-      },
-      {
-        "tab": "API reference",
-        "icon": "server",
-        "pages": [
-          "api-reference/introduction",
-          {
-            "group": "API documentation",
-            "pages": [
+            "tab": "Product Installation",
+            "icon": "brackets-curly",
+            "groups": [
               {
-                "group": "Whitelist References",
+                "group": "CafePOS Lite",
                 "pages": [
-                  "whitelist-add"
+                  "installation",
+                  "configuration",
+                  "api"
+                ]
+              }
+            ]
+          },
+          {
+            "tab": "API reference",
+            "icon": "server",
+            "pages": [
+              "api-reference/introduction",
+              {
+                "group": "API documentation",
+                "pages": [
+                  {
+                    "group": "Whitelist References",
+                    "pages": [
+                      "whitelist-add"
+                    ]
+                  }
                 ]
               }
             ]
           }
         ]
+      },
+      {
+        "version": "v2",
+        "hidden": true
       }
     ]
   },
