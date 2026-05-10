@@ -32,7 +32,8 @@
             "icon": "server",
             "pages": [
               "api-reference/introduction"
-            ]
+            ],
+            "hidden": true
           }
         ]
       },
