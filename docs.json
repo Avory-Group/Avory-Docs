@@ -70,7 +70,6 @@
     }
   },
   "api": {
-    "openapi": "openapi.json"
   },
   "background": {
     "decoration": "grid",
