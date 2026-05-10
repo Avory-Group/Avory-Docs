@@ -16,13 +16,17 @@
           {
             "tab": "Product Installation",
             "icon": "brackets-curly",
-            "groups": [
+            "pages": [
+              "welcome",
+              "terms-of-service",
               {
                 "group": "CafePOS Lite",
+                "icon": "coffee-pot",
                 "pages": [
                   "installation",
                   "configuration",
-                  "api"
+                  "api",
+                  "global-config"
                 ]
               }
             ]
@@ -31,9 +35,9 @@
             "tab": "API reference",
             "icon": "server",
             "pages": [
-              "api-reference/introduction"
-            ],
-            "hidden": true
+              "api-reference/introduction",
+              "api-reference/whitelist-add"
+            ]
           }
         ]
       },
@@ -62,6 +66,9 @@
     }
   },
   "api": {
+    "playground": {
+      "proxy": false
+    }
   },
   "background": {
     "decoration": "grid",
