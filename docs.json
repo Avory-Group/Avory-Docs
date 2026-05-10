@@ -31,18 +31,7 @@
             "tab": "API reference",
             "icon": "server",
             "pages": [
-              "api-reference/introduction",
-              {
-                "group": "API documentation",
-                "pages": [
-                  {
-                    "group": "Whitelist References",
-                    "pages": [
-                      "whitelist-add"
-                    ]
-                  }
-                ]
-              }
+              "api-reference/introduction"
             ]
           }
         ]
