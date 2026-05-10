@@ -81,7 +81,7 @@
   },
   "errors": {
     "404": {
-      "redirect": true,
+      "redirect": false,
       "title": "Page Not Found",
       "description": "The page you are looking for does not exist."
     }
