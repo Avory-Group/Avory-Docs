@@ -14,8 +14,8 @@
         "version": "v1",
         "tabs": [
           {
-            "tab": "Product Installation",
-            "icon": "brackets-curly",
+            "tab": "v1 Documentations",
+            "icon": "airplay",
             "pages": [
               "welcome",
               "terms-of-service",
