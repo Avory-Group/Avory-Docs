@@ -49,15 +49,15 @@ Learn how to set up a global configuration.
     -- =========================================================
     -- General Cafe Settings
     -- =========================================================
-    Settings.CafeName = "Demo Name"  -- Name of your cafe as displayed in the POS system
-    Settings.Booting = "Boot"     -- Set to On to deactivate booting. Set to Boot to activate booting.
+    GlobalConfig.CafeName = "Demo Name"  -- Name of your cafe as displayed in the POS system
+    GlobalConfig.Booting = "Boot"     -- Set to On to deactivate booting. Set to Boot to activate booting.
     -- If you not enter anything it will be set to "Boot"
-    Settings.PriceTag = "$"  -- What is your currency displayed on the POS screen?
-    Settings.RescannableItems = false  -- Should items be rescannable?
-    Settings.CustomUI = "Default" -- Set to default for default UI. Set to "Custom" for custom UI.
+    GlobalConfig.PriceTag = "$"  -- What is your currency displayed on the POS screen?
+    GlobalConfig.RescannableItems = false  -- Should items be rescannable?
+    GlobalConfig.CustomUI = "Default" -- Set to default for default UI. Set to "Custom" for custom UI.
     -- Make a Folder in ServerStorage called "NGS | CafePOS UI" and put your custom UI in it.
     
-    return Global Config
+    return GlobalConfig
     ```
   </Step>
   <Step title="Override The POS Settings">
@@ -92,7 +92,6 @@ Learn how to set up a global configuration.
     -- Loaded Settings
     -- =========================================================
     Settings.CafeName = gConfig.CafeName  -- Name of your cafe as displayed in the POS system
-    Settings.LaneNumber = gConfig.LaneNumber  -- Number of the POS lane (register)
     Settings.Booting = gConfig.Booting     -- Set to On to deactivate booting. Set to Boot to activate booting.
     -- If you not enter anything it will be set to "Boot"
     Settings.PriceTag = gConfig.PriceTag -- What is your currency displayed on the POS screen?
