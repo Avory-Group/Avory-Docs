@@ -50,8 +50,8 @@
     ]
   },
   "logo": {
-    "light": "/images/NGS-Smooth-Light.png",
-    "dark": "/images/NGS-Smooth-Dark.png"
+    "light": "/images/NGS-Smooth-Dark.png",
+    "dark": "/images/NGS-Smooth-Light.png"
   },
   "contextual": {
     "options": [
