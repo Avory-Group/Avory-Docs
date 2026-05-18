@@ -1,13 +1,16 @@
 {
   "$schema": "https://mintlify.com/docs.json",
   "theme": "mint",
-  "name": "NGS Docs",
+  "name": "Avory Docs",
   "colors": {
     "primary": "#a481f5",
     "light": "#4a3175",
     "dark": "#552d99"
   },
-  "favicon": "/images/NGS-2-removebg-preview.png",
+  "favicon": {
+    "light": "/images/Avory-Logo.black.svg",
+    "dark": "/images/Avory-Logo.white.svg"
+  },
   "navigation": {
     "versions": [
       {
@@ -50,8 +53,8 @@
     ]
   },
   "logo": {
-    "light": "/images/NGS-Smooth-Dark.png",
-    "dark": "/images/NGS-Smooth-Light.png"
+    "light": "/images/Avory-Logo.black.svg",
+    "dark": "/images/Avory-Logo.white.svg"
   },
   "contextual": {
     "options": [

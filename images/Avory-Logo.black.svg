@@ -1,0 +1,12 @@
+<svg width="512" height="512" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="logoGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="currentColor" stop-opacity="1"/>
+      <stop offset="100%" stop-color="currentColor" stop-opacity="0.75"/>
+    </linearGradient>
+  </defs>
+
+  <path d="M 30 50&#xA;       C 30 35, 38 25, 50 25&#xA;       C 62 25, 70 35, 70 50&#xA;       C 70 58, 66 64, 60 68&#xA;       L 60 68&#xA;       C 58 70, 54 72, 50 72&#xA;       C 46 72, 42 70, 40 68&#xA;       L 40 68&#xA;       C 34 64, 30 58, 30 50 Z&#xA;       M 44 48&#xA;       C 44 44, 46.5 40, 50 40&#xA;       C 53.5 40, 56 44, 56 48&#xA;       C 56 52, 53.5 56, 50 56&#xA;       C 46.5 56, 44 52, 44 48 Z" fill="url(#logoGradient)" fill-rule="evenodd"/>
+
+  <path d="M 38 70&#xA;       C 42 75, 46 78, 50 78&#xA;       C 54 78, 58 75, 62 70" stroke="currentColor" stroke-width="4" stroke-linecap="round" fill="none"/>
+</svg>
