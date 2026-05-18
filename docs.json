@@ -20,7 +20,7 @@
               "welcome",
               "terms-of-service",
               {
-                "group": "CafePOS Lite",
+                "group": "NGS CafePOS Lite",
                 "icon": "coffee-pot",
                 "pages": [
                   "installation",
