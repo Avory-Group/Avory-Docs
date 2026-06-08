@@ -26,12 +26,13 @@
                 "group": "NGS CafePOS Lite",
                 "icon": "coffee-pot",
                 "pages": [
-                  "installation",
-                  "configuration",
-                  "updating",
-                  "api",
-                  "global-config"
-                ]
+                  "ngs_cafepos_lite/installation",
+                  "ngs_cafepos_lite/configuration",
+                  "ngs_cafepos_lite/updating",
+                  "ngs_cafepos_lite/api",
+                  "ngs_cafepos_lite/gconfig"
+                ],
+                "expanded": true
               }
             ]
           },
