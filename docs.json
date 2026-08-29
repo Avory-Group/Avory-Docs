@@ -94,8 +94,6 @@
     }
   },
   "fonts": {
-    "family": "Google Sans",
-    "source": "https://fonts.gstatic.com/s/googlesans/v70/4UairENHsxJlGDuGo1OIlL3L2JB874GPhFI9_IqmuRqGpjeaLi42kO8QvnQkrb4vqeMXtoTN.woff2",
-    "format": "woff2"
+    "family": "Google Sans"
   }
 }  
