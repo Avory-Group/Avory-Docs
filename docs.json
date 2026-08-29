@@ -101,8 +101,8 @@
   "styling": {
     "codeblocks": {
       "theme": {
-        "light": "aurora-x",
-        "dark": "aurora-x"
+        "light": "github-light",
+        "dark": "github-dark"
       }
     }
   }
