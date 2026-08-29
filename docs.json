@@ -97,5 +97,13 @@
     "family": "SF Pro Display",
     "source": "https://cdn.jsdelivr.net/npm/sf-font@1.0.0/SFProDisplay-Regular.woff",
     "format": "woff"
+  },
+  "styling": {
+    "codeblocks": {
+      "theme": {
+        "light": "aurora-x",
+        "dark": "aurora-x"
+      }
+    }
   }
 }  
