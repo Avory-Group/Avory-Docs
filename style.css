@@ -1,238 +1,491 @@
-/* =========================================
-   Purple Aurora + Liquid Glass
-   Mintlify Custom CSS
-   ========================================= */
+/* =========================================================
+   Mintlify — Purple Aurora + Liquid Glass
+   ========================================================= */
+
+/* ---------- Variables ---------- */
 
 :root {
-  --aurora-purple: rgba(139, 92, 246, 0.18);
-  --aurora-violet: rgba(168, 85, 247, 0.12);
-  --glass-bg: rgba(255, 255, 255, 0.045);
-  --glass-border: rgba(255, 255, 255, 0.09);
+  --aurora-purple: rgba(139, 92, 246, 0.22);
+  --aurora-violet: rgba(168, 85, 247, 0.16);
+  --aurora-blue: rgba(99, 102, 241, 0.10);
+
+  --glass: rgba(255, 255, 255, 0.035);
+  --glass-hover: rgba(255, 255, 255, 0.055);
+  --glass-border: rgba(255, 255, 255, 0.075);
+
+  --glass-blur: 22px;
 }
 
-/* -----------------------------------------
-   Global background
-   ----------------------------------------- */
+
+/* =========================================================
+   BASE
+   ========================================================= */
+
+html {
+  background: #050507;
+}
 
 body {
+  position: relative;
+  min-height: 100vh;
+
   background:
     radial-gradient(
-      900px 500px at 50% -120px,
-      rgba(139, 92, 246, 0.20),
+      900px 650px at 50% -180px,
+      rgba(139, 92, 246, 0.18),
       transparent 70%
     ),
     radial-gradient(
-      700px 500px at 90% 20%,
-      rgba(168, 85, 247, 0.08),
-      transparent 70%
+      700px 600px at 10% 35%,
+      rgba(124, 58, 237, 0.08),
+      transparent 72%
     ),
     radial-gradient(
-      600px 500px at 10% 40%,
-      rgba(124, 58, 237, 0.06),
-      transparent 70%
+      800px 700px at 90% 65%,
+      rgba(168, 85, 247, 0.07),
+      transparent 72%
     ),
-    var(--background-primary);
+    #050507;
 
   background-attachment: fixed;
+
+  overflow-x: hidden;
 }
 
 
-/* -----------------------------------------
-   Animated Aurora
-   ----------------------------------------- */
+/* =========================================================
+   AURORA
+   ========================================================= */
 
-body::before {
+body::before,
+body::after {
   content: "";
+
   position: fixed;
+
   pointer-events: none;
+
   z-index: -1;
 
+  border-radius: 9999px;
+
+  filter: blur(90px);
+
+  will-change: transform;
+
+  opacity: 0.8;
+}
+
+
+/* Main purple aurora */
+
+body::before {
   width: 900px;
   height: 500px;
 
-  top: -250px;
+  top: -220px;
   left: 50%;
+
+  background:
+    radial-gradient(
+      ellipse at center,
+      var(--aurora-purple) 0%,
+      var(--aurora-violet) 35%,
+      transparent 72%
+    );
+
+  transform:
+    translate3d(-50%, 0, 0)
+    rotate(-5deg)
+    scale(1);
+
+  animation:
+    aurora-main
+    16s
+    cubic-bezier(0.45, 0, 0.55, 1)
+    infinite alternate;
+}
+
+
+/* Secondary aurora */
+
+body::after {
+  width: 700px;
+  height: 650px;
+
+  top: 10%;
+  right: -300px;
+
+  background:
+    radial-gradient(
+      ellipse at center,
+      rgba(168, 85, 247, 0.13) 0%,
+      rgba(124, 58, 237, 0.08) 35%,
+      transparent 72%
+    );
+
+  transform:
+    translate3d(0, 0, 0)
+    scale(1);
+
+  animation:
+    aurora-secondary
+    20s
+    cubic-bezier(0.45, 0, 0.55, 1)
+    infinite alternate;
+}
+
+
+/* =========================================================
+   AURORA ANIMATION
+   ========================================================= */
+
+@keyframes aurora-main {
+
+  0% {
+    transform:
+      translate3d(-52%, -5px, 0)
+      rotate(-5deg)
+      scale(1);
+  }
+
+  35% {
+    transform:
+      translate3d(-47%, 25px, 0)
+      rotate(-2deg)
+      scale(1.06);
+  }
+
+  70% {
+    transform:
+      translate3d(-54%, 10px, 0)
+      rotate(4deg)
+      scale(1.02);
+  }
+
+  100% {
+    transform:
+      translate3d(-49%, -15px, 0)
+      rotate(-2deg)
+      scale(1.08);
+  }
+}
+
+
+@keyframes aurora-secondary {
+
+  0% {
+    transform:
+      translate3d(0, 0, 0)
+      scale(1);
+  }
+
+  50% {
+    transform:
+      translate3d(-80px, 60px, 0)
+      scale(1.08);
+  }
+
+  100% {
+    transform:
+      translate3d(-30px, -50px, 0)
+      scale(0.96);
+  }
+}
+
+
+/* =========================================================
+   SUBTLE AURORA LIGHTING
+   ========================================================= */
+
+main {
+  position: relative;
+}
+
+
+/* Soft glow behind documentation */
+
+main::before {
+  content: "";
+
+  position: absolute;
+
+  pointer-events: none;
+
+  z-index: -1;
+
+  top: 0;
+  left: 50%;
+
+  width: 1000px;
+  height: 600px;
 
   transform: translateX(-50%);
 
   background:
     radial-gradient(
-      ellipse,
-      rgba(139, 92, 246, 0.18) 0%,
-      rgba(168, 85, 247, 0.10) 35%,
-      transparent 72%
+      ellipse at center,
+      rgba(139, 92, 246, 0.065),
+      transparent 70%
     );
 
-  filter: blur(70px);
+  filter: blur(80px);
 
   opacity: 0.8;
-
-  animation: aurora-float 12s ease-in-out infinite alternate;
-}
-
-@keyframes aurora-float {
-  0% {
-    transform: translateX(-52%) translateY(0) scale(1);
-  }
-
-  50% {
-    transform: translateX(-48%) translateY(25px) scale(1.06);
-  }
-
-  100% {
-    transform: translateX(-50%) translateY(-10px) scale(1.02);
-  }
 }
 
 
-/* -----------------------------------------
-   Navbar — Liquid Glass
-   ----------------------------------------- */
+/* =========================================================
+   NAVBAR — LIQUID GLASS
+   ========================================================= */
 
 #navbar {
-  background: rgba(10, 10, 14, 0.58) !important;
+  background: rgba(5, 5, 7, 0.48) !important;
 
-  backdrop-filter: blur(24px) saturate(150%);
-  -webkit-backdrop-filter: blur(24px) saturate(150%);
+  backdrop-filter:
+    blur(var(--glass-blur))
+    saturate(150%);
 
-  border-bottom: 1px solid rgba(255, 255, 255, 0.07);
+  -webkit-backdrop-filter:
+    blur(var(--glass-blur))
+    saturate(150%);
+
+  border-bottom:
+    1px solid
+    rgba(255, 255, 255, 0.06);
 
   box-shadow:
-    0 8px 30px rgba(0, 0, 0, 0.12),
+    0 8px 35px rgba(0, 0, 0, 0.10),
     inset 0 -1px 0 rgba(255, 255, 255, 0.025);
+
+  transition:
+    background 300ms ease,
+    border-color 300ms ease;
 }
 
 
-/* -----------------------------------------
-   Sidebar — subtle glass
-   ----------------------------------------- */
+/* =========================================================
+   SIDEBAR — GLASS
+   ========================================================= */
 
 #sidebar {
-  background: rgba(10, 10, 14, 0.35) !important;
+  background: rgba(5, 5, 7, 0.30) !important;
 
-  backdrop-filter: blur(20px) saturate(135%);
-  -webkit-backdrop-filter: blur(20px) saturate(135%);
+  backdrop-filter:
+    blur(24px)
+    saturate(140%);
 
-  border-right: 1px solid rgba(255, 255, 255, 0.045);
+  -webkit-backdrop-filter:
+    blur(24px)
+    saturate(140%);
+
+  border-right:
+    1px solid
+    rgba(255, 255, 255, 0.045);
 }
 
 
-/* -----------------------------------------
-   Cards
-   ----------------------------------------- */
+/* =========================================================
+   CONTENT
+   ========================================================= */
+
+#content {
+  position: relative;
+}
+
+
+/* =========================================================
+   CARDS — LIQUID GLASS
+   ========================================================= */
 
 card,
+[class*="Card"],
 [class*="card"] {
   background:
     linear-gradient(
       135deg,
       rgba(255, 255, 255, 0.055),
-      rgba(255, 255, 255, 0.025)
+      rgba(255, 255, 255, 0.018)
     ) !important;
 
-  border: 1px solid var(--glass-border);
+  border:
+    1px solid
+    var(--glass-border);
 
-  backdrop-filter: blur(18px) saturate(140%);
-  -webkit-backdrop-filter: blur(18px) saturate(140%);
+  backdrop-filter:
+    blur(20px)
+    saturate(145%);
+
+  -webkit-backdrop-filter:
+    blur(20px)
+    saturate(145%);
 
   box-shadow:
-    0 10px 35px rgba(0, 0, 0, 0.12),
+    0 12px 40px rgba(0, 0, 0, 0.10),
     inset 0 1px 0 rgba(255, 255, 255, 0.045);
 
   transition:
-    transform 180ms ease,
-    border-color 180ms ease,
-    background 180ms ease;
+    transform 250ms cubic-bezier(0.22, 1, 0.36, 1),
+    background 250ms ease,
+    border-color 250ms ease,
+    box-shadow 250ms ease;
 }
 
+
 card:hover,
+[class*="Card"]:hover,
 [class*="card"]:hover {
   transform: translateY(-2px);
-
-  border-color: rgba(168, 85, 247, 0.25);
 
   background:
     linear-gradient(
       135deg,
       rgba(168, 85, 247, 0.075),
-      rgba(255, 255, 255, 0.035)
+      rgba(255, 255, 255, 0.025)
     ) !important;
+
+  border-color:
+    rgba(168, 85, 247, 0.18);
+
+  box-shadow:
+    0 16px 45px rgba(0, 0, 0, 0.13),
+    0 0 35px rgba(139, 92, 246, 0.055),
+    inset 0 1px 0 rgba(255, 255, 255, 0.055);
 }
 
 
-/* -----------------------------------------
-   Buttons
-   ----------------------------------------- */
+/* =========================================================
+   BUTTONS
+   ========================================================= */
 
 button {
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-
   transition:
-    transform 150ms ease,
-    box-shadow 150ms ease;
+    transform 180ms cubic-bezier(0.22, 1, 0.36, 1),
+    background 180ms ease,
+    border-color 180ms ease,
+    box-shadow 180ms ease;
 }
+
 
 button:hover {
   box-shadow:
-    0 0 25px rgba(139, 92, 246, 0.12);
+    0 0 28px rgba(139, 92, 246, 0.10);
 }
 
 
-/* -----------------------------------------
-   Links
-   ----------------------------------------- */
+/* =========================================================
+   SEARCH
+   ========================================================= */
+
+#search {
+  background:
+    rgba(255, 255, 255, 0.035) !important;
+
+  border:
+    1px solid
+    rgba(255, 255, 255, 0.07);
+
+  backdrop-filter:
+    blur(18px)
+    saturate(140%);
+
+  -webkit-backdrop-filter:
+    blur(18px)
+    saturate(140%);
+
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.035);
+
+  transition:
+    background 200ms ease,
+    border-color 200ms ease,
+    box-shadow 200ms ease;
+}
+
+
+#search:hover,
+#search:focus-within {
+  background:
+    rgba(255, 255, 255, 0.05) !important;
+
+  border-color:
+    rgba(168, 85, 247, 0.16);
+
+  box-shadow:
+    0 0 25px rgba(139, 92, 246, 0.06);
+}
+
+
+/* =========================================================
+   CODE BLOCKS
+   ========================================================= */
+
+pre {
+  background:
+    rgba(5, 5, 7, 0.48) !important;
+
+  border:
+    1px solid
+    rgba(255, 255, 255, 0.065);
+
+  backdrop-filter:
+    blur(18px)
+    saturate(135%);
+
+  -webkit-backdrop-filter:
+    blur(18px)
+    saturate(135%);
+
+  box-shadow:
+    0 12px 35px rgba(0, 0, 0, 0.13),
+    inset 0 1px 0 rgba(255, 255, 255, 0.035);
+}
+
+
+/* =========================================================
+   BLOCKQUOTES
+   ========================================================= */
+
+blockquote {
+  background:
+    rgba(139, 92, 246, 0.035);
+
+  border-left:
+    2px solid
+    rgba(139, 92, 246, 0.35);
+
+  backdrop-filter:
+    blur(12px);
+
+  -webkit-backdrop-filter:
+    blur(12px);
+
+  border-radius:
+    0 10px 10px 0;
+}
+
+
+/* =========================================================
+   LINKS
+   ========================================================= */
 
 a {
   transition:
-    color 150ms ease,
-    text-shadow 150ms ease;
+    color 180ms ease,
+    text-shadow 180ms ease;
 }
+
 
 a:hover {
   text-shadow:
-    0 0 18px rgba(168, 85, 247, 0.35);
+    0 0 18px
+    rgba(168, 85, 247, 0.28);
 }
 
 
-/* -----------------------------------------
-   Code blocks — Glass
-   ----------------------------------------- */
-
-pre {
-  background: rgba(10, 10, 14, 0.55) !important;
-
-  border: 1px solid rgba(255, 255, 255, 0.07);
-
-  backdrop-filter: blur(18px) saturate(130%);
-  -webkit-backdrop-filter: blur(18px) saturate(130%);
-
-  box-shadow:
-    0 12px 35px rgba(0, 0, 0, 0.15),
-    inset 0 1px 0 rgba(255, 255, 255, 0.035);
-}
-
-
-/* -----------------------------------------
-   Search
-   ----------------------------------------- */
-
-#search {
-  background: rgba(255, 255, 255, 0.04) !important;
-
-  border: 1px solid rgba(255, 255, 255, 0.07);
-
-  backdrop-filter: blur(16px) saturate(140%);
-  -webkit-backdrop-filter: blur(16px) saturate(140%);
-
-  box-shadow:
-    inset 0 1px 0 rgba(255, 255, 255, 0.035);
-}
-
-
-/* -----------------------------------------
-   Headings
-   ----------------------------------------- */
+/* =========================================================
+   HEADINGS
+   ========================================================= */
 
 h1 {
   letter-spacing: -0.035em;
@@ -241,7 +494,7 @@ h1 {
     linear-gradient(
       135deg,
       #ffffff 0%,
-      #ffffff 45%,
+      #ffffff 55%,
       #c4b5fd 100%
     );
 
@@ -252,49 +505,120 @@ h1 {
 }
 
 
-/* -----------------------------------------
-   Selection
-   ----------------------------------------- */
+/* =========================================================
+   HORIZONTAL RULES
+   ========================================================= */
+
+hr {
+  border: none;
+
+  height: 1px;
+
+  background:
+    linear-gradient(
+      90deg,
+      transparent,
+      rgba(255, 255, 255, 0.08),
+      transparent
+    );
+}
+
+
+/* =========================================================
+   SELECTION
+   ========================================================= */
 
 ::selection {
-  background: rgba(139, 92, 246, 0.30);
+  background:
+    rgba(139, 92, 246, 0.28);
+
   color: white;
 }
 
 
-/* -----------------------------------------
-   Scrollbar
-   ----------------------------------------- */
+/* =========================================================
+   SCROLLBAR
+   ========================================================= */
 
 ::-webkit-scrollbar {
   width: 6px;
+  height: 6px;
 }
+
 
 ::-webkit-scrollbar-track {
   background: transparent;
 }
 
+
 ::-webkit-scrollbar-thumb {
-  background: rgba(168, 85, 247, 0.25);
-  border-radius: 999px;
+  background:
+    rgba(168, 85, 247, 0.22);
+
+  border-radius:
+    999px;
+
+  transition:
+    background 200ms ease;
 }
+
 
 ::-webkit-scrollbar-thumb:hover {
-  background: rgba(168, 85, 247, 0.40);
+  background:
+    rgba(168, 85, 247, 0.38);
 }
 
 
-/* -----------------------------------------
-   Reduced motion
-   ----------------------------------------- */
+/* =========================================================
+   MOBILE
+   ========================================================= */
+
+@media (max-width: 768px) {
+
+  body::before {
+    width: 650px;
+    height: 400px;
+
+    top: -180px;
+
+    filter: blur(75px);
+  }
+
+  body::after {
+    width: 500px;
+    height: 500px;
+
+    right: -250px;
+
+    filter: blur(75px);
+  }
+
+  #navbar {
+    backdrop-filter:
+      blur(20px)
+      saturate(140%);
+
+    -webkit-backdrop-filter:
+      blur(20px)
+      saturate(140%);
+  }
+}
+
+
+/* =========================================================
+   REDUCED MOTION
+   ========================================================= */
 
 @media (prefers-reduced-motion: reduce) {
-  body::before {
+
+  body::before,
+  body::after {
     animation: none;
   }
 
-  * {
-    scroll-behavior: auto !important;
+  *,
+  *::before,
+  *::after {
     transition: none !important;
   }
 }
