@@ -60,14 +60,9 @@
   "contextual": {
     "options": [
      "copy",
-     "view",
-     "chatgpt",
-     "claude",
-     "perplexity",
-     "mcp",
-     "cursor",
-     "vscode"
-   ]
+    "chatgpt",
+    "claude"
+  ]
   },
   "footer": {
     "socials": {
