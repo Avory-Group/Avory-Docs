@@ -1,0 +1,300 @@
+/* =========================================
+   Purple Aurora + Liquid Glass
+   Mintlify Custom CSS
+   ========================================= */
+
+:root {
+  --aurora-purple: rgba(139, 92, 246, 0.18);
+  --aurora-violet: rgba(168, 85, 247, 0.12);
+  --glass-bg: rgba(255, 255, 255, 0.045);
+  --glass-border: rgba(255, 255, 255, 0.09);
+}
+
+/* -----------------------------------------
+   Global background
+   ----------------------------------------- */
+
+body {
+  background:
+    radial-gradient(
+      900px 500px at 50% -120px,
+      rgba(139, 92, 246, 0.20),
+      transparent 70%
+    ),
+    radial-gradient(
+      700px 500px at 90% 20%,
+      rgba(168, 85, 247, 0.08),
+      transparent 70%
+    ),
+    radial-gradient(
+      600px 500px at 10% 40%,
+      rgba(124, 58, 237, 0.06),
+      transparent 70%
+    ),
+    var(--background-primary);
+
+  background-attachment: fixed;
+}
+
+
+/* -----------------------------------------
+   Animated Aurora
+   ----------------------------------------- */
+
+body::before {
+  content: "";
+  position: fixed;
+  pointer-events: none;
+  z-index: -1;
+
+  width: 900px;
+  height: 500px;
+
+  top: -250px;
+  left: 50%;
+
+  transform: translateX(-50%);
+
+  background:
+    radial-gradient(
+      ellipse,
+      rgba(139, 92, 246, 0.18) 0%,
+      rgba(168, 85, 247, 0.10) 35%,
+      transparent 72%
+    );
+
+  filter: blur(70px);
+
+  opacity: 0.8;
+
+  animation: aurora-float 12s ease-in-out infinite alternate;
+}
+
+@keyframes aurora-float {
+  0% {
+    transform: translateX(-52%) translateY(0) scale(1);
+  }
+
+  50% {
+    transform: translateX(-48%) translateY(25px) scale(1.06);
+  }
+
+  100% {
+    transform: translateX(-50%) translateY(-10px) scale(1.02);
+  }
+}
+
+
+/* -----------------------------------------
+   Navbar — Liquid Glass
+   ----------------------------------------- */
+
+#navbar {
+  background: rgba(10, 10, 14, 0.58) !important;
+
+  backdrop-filter: blur(24px) saturate(150%);
+  -webkit-backdrop-filter: blur(24px) saturate(150%);
+
+  border-bottom: 1px solid rgba(255, 255, 255, 0.07);
+
+  box-shadow:
+    0 8px 30px rgba(0, 0, 0, 0.12),
+    inset 0 -1px 0 rgba(255, 255, 255, 0.025);
+}
+
+
+/* -----------------------------------------
+   Sidebar — subtle glass
+   ----------------------------------------- */
+
+#sidebar {
+  background: rgba(10, 10, 14, 0.35) !important;
+
+  backdrop-filter: blur(20px) saturate(135%);
+  -webkit-backdrop-filter: blur(20px) saturate(135%);
+
+  border-right: 1px solid rgba(255, 255, 255, 0.045);
+}
+
+
+/* -----------------------------------------
+   Cards
+   ----------------------------------------- */
+
+card,
+[class*="card"] {
+  background:
+    linear-gradient(
+      135deg,
+      rgba(255, 255, 255, 0.055),
+      rgba(255, 255, 255, 0.025)
+    ) !important;
+
+  border: 1px solid var(--glass-border);
+
+  backdrop-filter: blur(18px) saturate(140%);
+  -webkit-backdrop-filter: blur(18px) saturate(140%);
+
+  box-shadow:
+    0 10px 35px rgba(0, 0, 0, 0.12),
+    inset 0 1px 0 rgba(255, 255, 255, 0.045);
+
+  transition:
+    transform 180ms ease,
+    border-color 180ms ease,
+    background 180ms ease;
+}
+
+card:hover,
+[class*="card"]:hover {
+  transform: translateY(-2px);
+
+  border-color: rgba(168, 85, 247, 0.25);
+
+  background:
+    linear-gradient(
+      135deg,
+      rgba(168, 85, 247, 0.075),
+      rgba(255, 255, 255, 0.035)
+    ) !important;
+}
+
+
+/* -----------------------------------------
+   Buttons
+   ----------------------------------------- */
+
+button {
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+
+  transition:
+    transform 150ms ease,
+    box-shadow 150ms ease;
+}
+
+button:hover {
+  box-shadow:
+    0 0 25px rgba(139, 92, 246, 0.12);
+}
+
+
+/* -----------------------------------------
+   Links
+   ----------------------------------------- */
+
+a {
+  transition:
+    color 150ms ease,
+    text-shadow 150ms ease;
+}
+
+a:hover {
+  text-shadow:
+    0 0 18px rgba(168, 85, 247, 0.35);
+}
+
+
+/* -----------------------------------------
+   Code blocks — Glass
+   ----------------------------------------- */
+
+pre {
+  background: rgba(10, 10, 14, 0.55) !important;
+
+  border: 1px solid rgba(255, 255, 255, 0.07);
+
+  backdrop-filter: blur(18px) saturate(130%);
+  -webkit-backdrop-filter: blur(18px) saturate(130%);
+
+  box-shadow:
+    0 12px 35px rgba(0, 0, 0, 0.15),
+    inset 0 1px 0 rgba(255, 255, 255, 0.035);
+}
+
+
+/* -----------------------------------------
+   Search
+   ----------------------------------------- */
+
+#search {
+  background: rgba(255, 255, 255, 0.04) !important;
+
+  border: 1px solid rgba(255, 255, 255, 0.07);
+
+  backdrop-filter: blur(16px) saturate(140%);
+  -webkit-backdrop-filter: blur(16px) saturate(140%);
+
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.035);
+}
+
+
+/* -----------------------------------------
+   Headings
+   ----------------------------------------- */
+
+h1 {
+  letter-spacing: -0.035em;
+
+  background:
+    linear-gradient(
+      135deg,
+      #ffffff 0%,
+      #ffffff 45%,
+      #c4b5fd 100%
+    );
+
+  -webkit-background-clip: text;
+  background-clip: text;
+
+  -webkit-text-fill-color: transparent;
+}
+
+
+/* -----------------------------------------
+   Selection
+   ----------------------------------------- */
+
+::selection {
+  background: rgba(139, 92, 246, 0.30);
+  color: white;
+}
+
+
+/* -----------------------------------------
+   Scrollbar
+   ----------------------------------------- */
+
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(168, 85, 247, 0.25);
+  border-radius: 999px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(168, 85, 247, 0.40);
+}
+
+
+/* -----------------------------------------
+   Reduced motion
+   ----------------------------------------- */
+
+@media (prefers-reduced-motion: reduce) {
+  body::before {
+    animation: none;
+  }
+
+  * {
+    scroll-behavior: auto !important;
+    transition: none !important;
+  }
+}
